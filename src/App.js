@@ -25,19 +25,19 @@ const App = () => {
             <Header />
             <SignUp />
           </Route>
-          {!user  && 
+          {!user ? (
             <Route path="/">
               <div className="app-body">
                 <Header />
                 <h1>PLEASE SIGN IN</h1>
               </div>
             </Route>
-           : 
+          ) : (
             <div className="app-body">
               <Header />
               <h1>I AM LOGGED</h1>
             </div>
-          }
+          )}
         </Switch>
       </Fragment>
     </Router>
