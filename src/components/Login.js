@@ -1,8 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useDataLayerValue } from "../DataLayer";
+import { auth } from "../justin";
 import "./Login.css";
 
 const Login = () => {
+  const [{ user }, dispatch] = useDataLayerValue();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        dispatch({
+          type: "SET_USER",
+          user: authUser,
+        });
+      }
+
+      // setUser(authUser);
+    });
+  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory();
+  const signin = () => {
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((authUser) => {
+        if (authUser) {
+          history.push("/");
+        }
+      })
+      .catch((err) => alert(err.messgae));
+  };
   return (
     <div className="login">
       <div className="login-header">
@@ -10,9 +39,22 @@ const Login = () => {
           src="https://instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
           alt=""
         />
-        <input type="text" placeholder="Phone number, username, email" />
-        <input type="text" placeholder="Password" />
-        <button className="login-btn">Log In</button>
+        <input
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email..."
+        />
+        <input
+          type="password"
+          placeholder="Password... "
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button className="login-btn" onClick={signin}>
+          {" "}
+          Log In
+        </button>
         <span>OR</span>
         <a href="/" className="fb">
           <i class="fab fa-facebook-square"></i>Log In with Facebook
@@ -23,12 +65,12 @@ const Login = () => {
       </div>
 
       <div className="header-down">
-        <h5>
+        <h4>
           Don't have an account?
           <Link to="/signup">
-            <a className="signup">Sign Up</a>
+            <h4 className="signup">Sign Up</h4>
           </Link>
-        </h5>
+        </h4>
       </div>
     </div>
   );

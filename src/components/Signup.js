@@ -1,23 +1,33 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { auth } from "../justin";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-
+  const history = useHistory();
   const signUp = (e) => {
     e.preventDefault();
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
+        if (auth) {
+          history.push("/");
+        }
         authUser.user.updateProfile({
           displayName: username,
         });
+
+        console.log(authUser);
       })
       .catch((err) => alert(err.message));
+
+    setEmail("");
+    setPassword("");
+    setUsername("");
   };
+
   return (
     <div className="login">
       <div className="login-header">
@@ -41,7 +51,7 @@ const SignUp = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          type="text"
+          type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -50,12 +60,13 @@ const SignUp = () => {
           Sign Up
         </button>
       </div>
-
       <div className="header-down">
         <h5>
-          Have an account?{" "}
+          Have an account?
           <Link to="/login">
-            <a className="signup">Login</a>
+            <a href="/" className="signup">
+              Login
+            </a>
           </Link>
         </h5>
       </div>

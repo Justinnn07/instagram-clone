@@ -4,43 +4,40 @@ import "./App.css";
 import Login from "./components/Login";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignUp from "./components/Signup";
-import { auth } from "./justin";
+// import { auth } from "./justin";
 import { useDataLayerValue } from "./DataLayer";
 
 const App = () => {
-  const [{}, dispatch] = useDataLayerValue();
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      console.info(user);
-      if (user) {
-        dispatch({
-          type: "SET_USER",
-          user: user,
-        });
-      } else {
-        dispatch({
-          type: "SET_USER",
-          user: null,
-        });
-      }
-    });
-  });
+  const [{ user }, dispatch] = useDataLayerValue();
+  // const [user, setUser] = useState(null);
+
+  // console.log(user);
   return (
     <Router>
       <Fragment>
         <Switch>
           <Route path="/login">
             <Header />
-            <Login />
+            {/* <Login /> */}
+            <h1>I AM LOGED In</h1>
           </Route>
           <Route path="/signup">
             <Header />
             <SignUp />
           </Route>
-          <Route path="/">
-            <Header />
-            <h1>I AM LOGGED IN !!! </h1>
-          </Route>
+          {!user  && 
+            <Route path="/">
+              <div className="app-body">
+                <Header />
+                <h1>PLEASE SIGN IN</h1>
+              </div>
+            </Route>
+           : 
+            <div className="app-body">
+              <Header />
+              <h1>I AM LOGGED</h1>
+            </div>
+          }
         </Switch>
       </Fragment>
     </Router>
