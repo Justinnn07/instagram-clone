@@ -5,7 +5,7 @@ import { auth } from "../justin";
 import "./Login.css";
 
 const Login = () => {
-  const [{ user }, dispatch] = useDataLayerValue();
+  const [{}, dispatch] = useDataLayerValue();
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -14,9 +14,12 @@ const Login = () => {
           type: "SET_USER",
           user: authUser,
         });
+        // } else {
+        //   dispatch({
+        //     type: "SET_USER",
+        //     user: null,
+        //   });
       }
-
-      // setUser(authUser);
     });
   });
   const [email, setEmail] = useState("");
@@ -52,7 +55,6 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button className="login-btn" onClick={signin}>
-          {" "}
           Log In
         </button>
         <span>OR</span>

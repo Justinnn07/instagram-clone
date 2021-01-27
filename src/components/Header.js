@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDataLayerValue } from "../DataLayer";
 import "./Header.css";
 import HomeIcon from "@material-ui/icons/Home";
@@ -7,9 +7,9 @@ import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutline
 import ChatOutlinedIcon from "@material-ui/icons/ChatOutlined";
 import ExploreOutlined from "@material-ui/icons/ExploreOutlined";
 import { Avatar } from "@material-ui/core";
+import { auth } from "../justin";
 const Header = () => {
   const [{ user }, dispatch] = useDataLayerValue();
-
   return (
     <div className="header">
       <div className="insta-logo">
@@ -21,7 +21,20 @@ const Header = () => {
       <div className="search">
         <input type="text" placeholder="Search..." />
       </div>
-      {!user ? (
+      {user ? (
+        <div className="btns2">
+          <HomeIcon fontSize="medium" />
+          <ChatOutlinedIcon fontSize="medium" />
+          <ExploreOutlined fontSize="medium" />
+          <FavoriteBorderOutlinedIcon fontSize="medium" />
+          <Avatar
+            src="/images/1.jpg"
+            className="avatar"
+            alt="J"
+            style={{ cursor: "pointer" }}
+          />
+        </div>
+      ) : (
         <div className="btns">
           <Link to="/login">
             <button className="blue">LOGIN</button>
@@ -29,14 +42,6 @@ const Header = () => {
           <Link to="/signup">
             <button className="transparent">Sign Up</button>
           </Link>
-        </div>
-      ) : (
-        <div className="btns2">
-          <HomeIcon fontSize="medium" />
-          <ChatOutlinedIcon fontSize="medium" />
-          <ExploreOutlined fontSize="medium" />
-          <FavoriteBorderOutlinedIcon fontSize="medium" />
-          <Avatar src="/images/1.jpg" className="avatar" alt="J" />
         </div>
       )}
       {/* <div className="btns">
