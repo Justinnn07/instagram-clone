@@ -18,7 +18,6 @@ const SignUp = () => {
         authUser.user.updateProfile({
           displayName: username,
         });
-
         console.log(authUser);
       })
       .catch((err) => alert(err.message));
