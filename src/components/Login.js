@@ -59,7 +59,11 @@ const Login = () => {
         </button>
         <span>OR</span>
         <a href="/" className="fb">
-          <i class="fab fa-facebook-square"></i>Log In with Facebook
+          <i
+            class="fab fa-facebook-square"
+            onClick={((e) => e.preventDefault(), auth.signOut())}
+          ></i>
+          Log In with Facebook
         </a>
         <a href="/" className="forgot">
           Forgot password?
