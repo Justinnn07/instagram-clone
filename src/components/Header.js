@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDataLayerValue } from "../DataLayer";
 import "./Header.css";
 import HomeIcon from "@material-ui/icons/Home";
@@ -8,8 +8,12 @@ import ChatOutlinedIcon from "@material-ui/icons/ChatOutlined";
 import ExploreOutlined from "@material-ui/icons/ExploreOutlined";
 import { Avatar } from "@material-ui/core";
 import { auth } from "../justin";
+
 const Header = () => {
-  const [{ user }, dispatch] = useDataLayerValue();
+  const [{ user }] = useDataLayerValue();
+  const signout = () => {
+    auth.signOut();
+  };
   return (
     <div className="header">
       <div className="insta-logo">
@@ -32,6 +36,7 @@ const Header = () => {
             className="avatar"
             alt="J"
             style={{ cursor: "pointer" }}
+            onClick={signout()}
           />
         </div>
       ) : (

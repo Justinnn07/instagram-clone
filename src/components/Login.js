@@ -1,30 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDataLayerValue } from "../DataLayer";
+// import { useDataLayerValue } from "../DataLayer";
 import { auth } from "../justin";
 import "./Login.css";
 
 const Login = () => {
-  const [{}, dispatch] = useDataLayerValue();
-
-  useEffect(() => {
-    auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        dispatch({
-          type: "SET_USER",
-          user: authUser,
-        });
-        // } else {
-        //   dispatch({
-        //     type: "SET_USER",
-        //     user: null,
-        //   });
-      }
-    });
-  });
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
+  // const [{}, dispatch] = useDataLayerValue();
+
+  // useEffect(() => {
+  //   auth.onAuthStateChanged((authUser) => {
+  //     if (authUser) {
+  //       dispatch({
+  //         type: "SET_USER",
+  //         user: authUser,
+  //       });
+  //     }
+  //     // } else {
+  //     //   dispatch({
+  //     //     type: "SET_USER",
+  //     //     user: null,
+  //     //   });
+  //     // }
+  //   });
+  // });
   const signin = () => {
     auth
       .signInWithEmailAndPassword(email, password)
@@ -59,10 +60,7 @@ const Login = () => {
         </button>
         <span>OR</span>
         <a href="/" className="fb">
-          <i
-            class="fab fa-facebook-square"
-            onClick={((e) => e.preventDefault(), auth.signOut())}
-          ></i>
+          <i class="fab fa-facebook-square"></i>
           Log In with Facebook
         </a>
         <a href="/" className="forgot">

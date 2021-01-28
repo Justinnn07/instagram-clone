@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import Header from "./components/Header";
 import "./App.css";
 import Login from "./components/Login";
@@ -7,7 +7,8 @@ import SignUp from "./components/Signup";
 import { useDataLayerValue } from "./DataLayer";
 
 const App = () => {
-  const [{ user }, dispatch] = useDataLayerValue();
+  const [{ user }] = useDataLayerValue();
+
   // const [vishakh, setVishakh] = useState([]);
 
   // console.info(vishakh);

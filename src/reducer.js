@@ -1,5 +1,5 @@
 const initialState = {
-  user: null,
+  user: false,
 };
 
 const reducer = (state, action) => {
