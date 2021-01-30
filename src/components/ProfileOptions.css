@@ -32,4 +32,5 @@
 
 .--active > .MuiSvgIcon-root {
   color: black !important;
+  cursor: pointer;
 }
