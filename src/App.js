@@ -25,10 +25,8 @@ const App = () => {
   const [{ user }, dispatch] = useDataLayerValue();
 
   useEffect(() => {
-    // will only run once when the app component loads...
-
     auth.onAuthStateChanged((authUser) => {
-      console.log("THE USER IS >>> ", authUser);
+      // console.log("THE USER IS >>> ", authUser);
 
       if (authUser) {
         dispatch({
@@ -67,7 +65,7 @@ const App = () => {
           ) : (
             <div className="app-body">
               <Header />
-              <h1>I AM LOGGED IN </h1>
+              <h1>{user.displayName}</h1>
             </div>
           )}
         </Switch>
