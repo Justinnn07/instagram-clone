@@ -12,7 +12,9 @@ import { auth } from "../justin";
 const Header = () => {
   const [{ user }] = useDataLayerValue();
   const signout = () => {
-    auth.signOut();
+    if (user) {
+      auth.signOut();
+    }
   };
   return (
     <div className="header">
@@ -25,21 +27,8 @@ const Header = () => {
       <div className="search">
         <input type="text" placeholder="Search..." />
       </div>
-      {user ? (
-        <div className="btns2">
-          <HomeIcon fontSize="medium" />
-          <ChatOutlinedIcon fontSize="medium" />
-          <ExploreOutlined fontSize="medium" />
-          <FavoriteBorderOutlinedIcon fontSize="medium" />
-          <Avatar
-            src="/images/1.jpg"
-            className="avatar"
-            alt="J"
-            style={{ cursor: "pointer" }}
-            onClick={signout()}
-          />
-        </div>
-      ) : (
+
+      {!user ? (
         <div className="btns">
           <Link to="/login">
             <button className="blue">LOGIN</button>
@@ -48,23 +37,24 @@ const Header = () => {
             <button className="transparent">Sign Up</button>
           </Link>
         </div>
+      ) : (
+        <div className="btns2">
+          <HomeIcon />
+          <ChatOutlinedIcon />
+          <ExploreOutlined />
+          <FavoriteBorderOutlinedIcon />
+          <Avatar
+            src="/images/1.jpg"
+            className="avatar"
+            alt="J"
+            style={{ cursor: "pointer" }}
+            onClick={(e) => {
+              e.preventDefault();
+              signout();
+            }}
+          />
+        </div>
       )}
-      {/* <div className="btns">
-        <Link to="/login">
-          <button className="blue">LOGIN</button>
-        </Link>
-        <Link to="/signup">
-          <button className="transparent">Sign Up</button>
-        </Link>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            auth.signOut();
-          }}
-        >
-          Logout
-        </button>
-      </div> */}
     </div>
   );
 };

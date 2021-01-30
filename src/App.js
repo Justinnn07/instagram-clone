@@ -1,14 +1,13 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import Header from "./components/Header";
 import "./App.css";
 import Login from "./components/Login";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignUp from "./components/Signup";
 import { useDataLayerValue } from "./DataLayer";
+import { auth } from "./justin";
 
 const App = () => {
-  const [{ user }] = useDataLayerValue();
-
   // const [vishakh, setVishakh] = useState([]);
 
   // console.info(vishakh);
@@ -23,6 +22,28 @@ const App = () => {
   //     .then((data) => setVishakh(data));
   // });
 
+  const [{ user }, dispatch] = useDataLayerValue();
+
+  useEffect(() => {
+    // will only run once when the app component loads...
+
+    auth.onAuthStateChanged((authUser) => {
+      console.log("THE USER IS >>> ", authUser);
+
+      if (authUser) {
+        dispatch({
+          type: "SET_USER",
+          user: authUser,
+        });
+      } else {
+        dispatch({
+          type: "SET_USER",
+          user: null,
+        });
+      }
+    });
+  }, []);
+
   return (
     <Router>
       <Fragment>
@@ -36,18 +57,18 @@ const App = () => {
             <Header />
             <SignUp />
           </Route>
-          {user ? (
-            <div className="app-body">
-              <Header />
-              <h1>I AM LOGGED IN </h1>
-            </div>
-          ) : (
+          {!user ? (
             <Route path="/">
               <div className="app-body">
                 <Header />
                 <h1>PLEASE SIGN IN</h1>
               </div>
             </Route>
+          ) : (
+            <div className="app-body">
+              <Header />
+              <h1>I AM LOGGED IN </h1>
+            </div>
           )}
         </Switch>
       </Fragment>
