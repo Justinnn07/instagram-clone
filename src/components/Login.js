@@ -7,6 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
+
   const signin = () => {
     auth
       .signInWithEmailAndPassword(email, password)
@@ -15,7 +16,7 @@ const Login = () => {
           history.push("/");
         }
       })
-      .catch((err) => alert(err.messgae));
+      .catch((err) => alert(err.message));
   };
   return (
     <div className="login">
@@ -25,7 +26,7 @@ const Login = () => {
           alt=""
         />
         <input
-          type="text"
+          type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email..."
@@ -54,7 +55,6 @@ const Login = () => {
           Forgot password?
         </a>
       </div>
-
       <div className="header-down">
         <h4>
           Don't have an account?

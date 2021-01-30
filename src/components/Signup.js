@@ -44,7 +44,7 @@ const SignUp = () => {
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
-          type="text"
+          type="email"
           placeholder="Phone number or email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
