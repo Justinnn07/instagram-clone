@@ -44,9 +44,9 @@ const Header = () => {
           <ExploreOutlined />
           <FavoriteBorderOutlinedIcon />
           <Avatar
-            src="/images/1.jpg"
+            src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
             className="avatar"
-            alt="J"
+            alt={user.displayName}
             style={{ cursor: "pointer" }}
             onClick={(e) => {
               e.preventDefault();

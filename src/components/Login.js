@@ -8,6 +8,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const history = useHistory();
 
+  // console.info(password.length);
+
   const signin = () => {
     auth
       .signInWithEmailAndPassword(email, password)
