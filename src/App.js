@@ -42,7 +42,7 @@ const App = () => {
         });
       }
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <Router>
