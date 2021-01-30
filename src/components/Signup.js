@@ -55,12 +55,14 @@ const SignUp = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {password ? (
+        {password && email && username ? (
           <button className="login-btn" onClick={signUp}>
             Sign Up
           </button>
         ) : (
-          <button className="sign-up">Sign Up</button>
+          <button className="sign-up" disabled={true}>
+            Sign Up
+          </button>
         )}
       </div>
       <div className="header-down">

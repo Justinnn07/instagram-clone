@@ -36,9 +36,15 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="login-btn" onClick={signin}>
-          Log In
-        </button>
+        {email && password ? (
+          <button className="login-btn" onClick={signin}>
+            Log In
+          </button>
+        ) : (
+          <button className="sign-up" disabled={true}>
+            Log In
+          </button>
+        )}
         <span>OR</span>
         <a href="/" className="fb">
           <i className="fab fa-facebook-square"></i>
