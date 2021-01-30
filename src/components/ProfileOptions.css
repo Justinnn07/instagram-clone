@@ -1,0 +1,34 @@
+.profileOptions {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.profileOption > span {
+  margin-left: 10px;
+  font-size: small;
+  color: #8e9cbb;
+  font-weight: 600;
+}
+
+.profileOption > .MuiSvgIcon-root {
+  margin-left: 3px;
+  color: #8e9cbb !important;
+}
+
+.profileOption {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin-top: -10px;
+}
+
+.--active > span {
+  color: black;
+}
+
+.--active > .MuiSvgIcon-root {
+  color: black !important;
+}

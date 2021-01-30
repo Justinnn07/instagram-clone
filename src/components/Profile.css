@@ -1,6 +1,7 @@
 .image {
-  height: 190px;
-  border-radius: 100px;
+  width: 180px;
+  height: 180px;
+  border-radius: 100%;
 }
 
 .profile {
@@ -83,7 +84,7 @@
 }
 
 .profile-name > strong {
-  margin-right: 225px;
+  margin-right: 185px;
   margin-top: -10px;
 }
 
