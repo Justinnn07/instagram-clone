@@ -4,6 +4,7 @@
   padding: 20px;
   cursor: pointer;
   justify-content: center;
+  width: 100%;
 }
 
 .profileOption > span {

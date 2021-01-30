@@ -6,6 +6,7 @@ import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutline
 import ExploreOutlined from "@material-ui/icons/ExploreOutlined";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import { Avatar } from "@material-ui/core";
+import { auth } from "../justin";
 
 const Header = () => {
   const [{ user }] = useDataLayerValue();
@@ -42,7 +43,11 @@ const Header = () => {
           <HomeOutlinedIcon />
           <i class="fab fa-facebook-messenger message"></i>
           <ExploreOutlined />
-          <FavoriteBorderOutlinedIcon />
+          <FavoriteBorderOutlinedIcon
+            onClick={(e) => {
+              e.preventDefault(auth.signOut());
+            }}
+          />
           <Link to="/profile">
             <Avatar
               src="https://avatars.githubusercontent.com/u/69856008?s=460&u=c6efdedd0bb24ae3fc6b7edf81a86e2881fba995&v=4"

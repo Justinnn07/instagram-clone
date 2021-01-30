@@ -9,7 +9,7 @@ const Profile = () => {
     <div className="profile">
       <div className="profile-image">
         <img
-          src="https://avatars.githubusercontent.com/u/69856008?s=460&u=c6efdedd0bb24ae3fc6b7edf81a86e2881fba995&v=4"
+          src="https://i1.wp.com/www.antinews.in/wp-content/uploads/2020/12/12118-world-trusts-indian-economy-tatas-role-important-pm-narendra-modi.jpg?fit=850%2C567&ssl=1"
           alt=""
           className="image"
         />
