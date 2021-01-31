@@ -50,7 +50,6 @@ const App = () => {
     <Router>
       <Fragment>
         <Header />
-
         <Switch>
           <Route path="/profile">
             <Profile />
@@ -61,20 +60,17 @@ const App = () => {
               <Posts image="https://avatars.githubusercontent.com/u/60139520?s=460&u=b5d34c47e2965d817ddfc553a3c73a8f430075bb&v=4" />
             </div>
           </Route>
-          {!user ? (
+          {user ? (
+            <button style={{ display: "none" }}>DISPLAY NONE</button>
+          ) : (
             <Route path="/login">
               <Login />
             </Route>
-          ) : (
-            <button style={{ display: "none" }}>signout</button>
           )}
-          {!user ? (
-            <Route path="/signup">
-              <SignUp />
-            </Route>
-          ) : (
-            <button style={{ display: "none" }}>DISPLAY NONE</button>
-          )}
+
+          <Route path="/signup">
+            <SignUp />
+          </Route>
 
           {!user ? (
             <Route path="/">

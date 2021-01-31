@@ -48,14 +48,25 @@ const Header = () => {
               e.preventDefault(auth.signOut());
             }}
           />
-          <Link to="/profile">
-            <Avatar
-              src="https://avatars.githubusercontent.com/u/69856008?s=460&u=c6efdedd0bb24ae3fc6b7edf81a86e2881fba995&v=4"
-              className="avatar"
-              alt={user.displayName}
-              style={{ cursor: "pointer" }}
-            />
-          </Link>
+          {!user.photoURL ? (
+            <Link to="/profile">
+              <Avatar
+                src="/images/1.pjg"
+                className="avatar"
+                alt={user.displayName}
+                style={{ cursor: "pointer" }}
+              />
+            </Link>
+          ) : (
+            <Link to="/profile">
+              <Avatar
+                src={user.photoURL}
+                className="avatar"
+                alt={user.displayName}
+                style={{ cursor: "pointer" }}
+              />
+            </Link>
+          )}
         </div>
       )}
     </div>

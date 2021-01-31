@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { auth } from "../justin";
+import { auth, fb } from "../justin";
 import "./Login.css";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import { useDataLayerValue } from "../DataLayer";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
 
+  const [dispatch] = useDataLayerValue();
   // console.info(password.length);
 
   const signin = () => {
@@ -19,6 +22,19 @@ const Login = () => {
         }
       })
       .catch((err) => alert(err.message));
+  };
+
+  const fbSign = () => {
+    auth
+      .signInWithPopup(fb)
+      .then((authUser) => {
+        dispatch({
+          type: "SET_USER",
+          user: authUser,
+        });
+        history.push("/");
+      })
+      .catch((err) => err.message);
   };
   return (
     <div className="login">
@@ -49,13 +65,13 @@ const Login = () => {
           </button>
         )}
         <span>OR</span>
-        <a href="/" className="fb">
-          <i className="fab fa-facebook-square"></i>
+        <h4 onClick={fbSign} className="fb">
+          <FacebookIcon />
           Log In with Facebook
-        </a>
-        <a href="/" className="forgot">
+        </h4>
+        <h4 href="/" className="forgot">
           Forgot password?
-        </a>
+        </h4>
       </div>
       <div className="header-down">
         <h4>

@@ -50,8 +50,12 @@
 }
 
 .fb {
-  color: #3b5998;
+  color: #17aafd;
   text-decoration: none;
+}
+
+.fb > .MuiSvgIcon-root {
+  margin-bottom: -5px;
 }
 
 i {

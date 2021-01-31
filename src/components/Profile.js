@@ -8,15 +8,19 @@ const Profile = () => {
   return (
     <div className="profile">
       <div className="profile-image">
-        <img
-          src="https://i1.wp.com/www.antinews.in/wp-content/uploads/2020/12/12118-world-trusts-indian-economy-tatas-role-important-pm-narendra-modi.jpg?fit=850%2C567&ssl=1"
-          alt=""
-          className="image"
-        />
+        {!user.photoURL ? (
+          <img
+            src="https://cdn4.iconfinder.com/data/icons/instagram-ui-twotone/48/Paul-18-512.png"
+            alt=""
+            className="image"
+          />
+        ) : (
+          <img src={user.photoURL} alt="" className="image" />
+        )}
       </div>
       <div className="profile-flex">
         <div className="profile-set">
-          <h2>{user.displayName}</h2>
+          <h2 className="h2">{user.displayName}</h2>
           <button>Edit Profile</button>
           <SettingsOutlinedIcon className="setting" fontSize="default" />
         </div>
