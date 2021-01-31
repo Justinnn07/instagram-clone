@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer > span {
+  padding: 20px;
+  color: lightgray;
+  font-weight: 600;
+  cursor: pointer;
+}

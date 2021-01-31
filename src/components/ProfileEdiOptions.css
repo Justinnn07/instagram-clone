@@ -1,0 +1,23 @@
+.profileEditOptions {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  margin-left: 10px;
+  width: 20%;
+  border: 2px solid lightgray;
+}
+
+.profileEditOptions > span {
+  padding: 16px;
+  font-size: large;
+}
+
+.profileEditOptions > span:hover {
+  background-color: #fafafa;
+  cursor: pointer;
+  border-left: 2px solid lightgray;
+}
+
+.span {
+  font-weight: 500;
+}

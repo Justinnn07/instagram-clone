@@ -9,22 +9,10 @@ import { auth } from "./justin";
 import Profile from "./components/Profile";
 import ProfileOptions from "./components/ProfileOptions";
 import Posts from "./components/Posts";
+import ProfileEdit from "./components/ProfileEdit";
+import Footer from "./components/Footer";
 
 const App = () => {
-  // const [vishakh, setVishakh] = useState([]);
-
-  // console.info(vishakh);
-
-  // // console.log(user);
-
-  // const URL = "https://disease.sh/v3/covid-19/all";
-
-  // useEffect(() => {
-  //   fetch(URL)
-  //     .then((res) => res.json())
-  //     .then((data) => setVishakh(data));
-  // });
-
   const [{ user }, dispatch] = useDataLayerValue();
 
   // console.info(user)
@@ -51,6 +39,10 @@ const App = () => {
       <Fragment>
         <Header />
         <Switch>
+          <Route path="/profileedit">
+            <ProfileEdit />
+            <Footer />
+          </Route>
           <Route path="/profile">
             <Profile />
             <ProfileOptions />
@@ -60,14 +52,9 @@ const App = () => {
               <Posts image="https://avatars.githubusercontent.com/u/60139520?s=460&u=b5d34c47e2965d817ddfc553a3c73a8f430075bb&v=4" />
             </div>
           </Route>
-          {user ? (
-            <button style={{ display: "none" }}>DISPLAY NONE</button>
-          ) : (
-            <Route path="/login">
-              <Login />
-            </Route>
-          )}
-
+          <Route path="/login">
+            <Login />
+          </Route>
           <Route path="/signup">
             <SignUp />
           </Route>

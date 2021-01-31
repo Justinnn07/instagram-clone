@@ -1,12 +1,34 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { auth } from "../justin";
+import { useDataLayerValue } from "../DataLayer";
+import { auth, fb } from "../justin";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const history = useHistory();
+  const [dispatch] = useDataLayerValue();
+
+  const fbSign = () => {
+    auth
+      .signInWithPopup(fb)
+      .then((authUser) => {
+        history.push("/");
+        if (authUser) {
+          dispatch({
+            type: "SET_USER",
+            user: authUser,
+          });
+        } else {
+          dispatch({
+            type: "SET_USER",
+            user: null,
+          });
+        }
+      })
+      .catch((err) => err.message);
+  };
   const signUp = (e) => {
     e.preventDefault();
     auth
@@ -34,7 +56,7 @@ const SignUp = () => {
           src="https://instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
           alt=""
         />
-        <button className="login-btn i">
+        <button className="login-btn i" onClick={fbSign}>
           <i class="fab fa-facebook-square"></i> Sign Up with Facebook
         </button>
         <input

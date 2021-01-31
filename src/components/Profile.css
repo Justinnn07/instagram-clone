@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   padding: 30px;
-  border-bottom: 2px solid lightgray;
+  border: 2px solid lightgray;
   width: 100%;
 }
 

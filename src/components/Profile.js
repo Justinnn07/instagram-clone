@@ -2,6 +2,7 @@ import React from "react";
 import "./Profile.css";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import { useDataLayerValue } from "../DataLayer";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const [{ user }] = useDataLayerValue();
@@ -21,7 +22,9 @@ const Profile = () => {
       <div className="profile-flex">
         <div className="profile-set">
           <h2 className="h2">{user.displayName}</h2>
-          <button>Edit Profile</button>
+          <Link to="/profileedit">
+            <button style={{ cursor: "pointer" }}>Edit Profile</button>
+          </Link>
           <SettingsOutlinedIcon className="setting" fontSize="default" />
         </div>
         <div className="profile-stats">

@@ -28,12 +28,20 @@ const Login = () => {
     auth
       .signInWithPopup(fb)
       .then((authUser) => {
-        dispatch({
-          type: "SET_USER",
-          user: authUser,
-        });
         history.push("/");
+        if (authUser) {
+          dispatch({
+            type: "SET_USER",
+            user: authUser,
+          });
+        } else {
+          dispatch({
+            type: "SET_USER",
+            user: null,
+          });
+        }
       })
+
       .catch((err) => err.message);
   };
   return (
@@ -65,7 +73,7 @@ const Login = () => {
           </button>
         )}
         <span>OR</span>
-        <h4 onClick={fbSign} className="fb">
+        <h4 onClick={fbSign} style={{ cursor: "pointer" }} className="fb">
           <FacebookIcon />
           Log In with Facebook
         </h4>

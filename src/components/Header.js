@@ -40,10 +40,16 @@ const Header = () => {
         </div>
       ) : (
         <div className="btns2">
-          <HomeOutlinedIcon />
-          <i class="fab fa-facebook-messenger message"></i>
-          <ExploreOutlined />
+          <Link to="/" style={{ color: "black" }}>
+            <HomeOutlinedIcon fontSize="large" />
+          </Link>
+          <i
+            class="fab fa-facebook-messenger message"
+            style={{ fontSize: "25px" }}
+          ></i>
+          <ExploreOutlined fontSize="small" />
           <FavoriteBorderOutlinedIcon
+            fontSize="large"
             onClick={(e) => {
               e.preventDefault(auth.signOut());
             }}
