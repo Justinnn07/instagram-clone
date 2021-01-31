@@ -39,6 +39,8 @@ const SignUp = () => {
         }
         authUser.user.updateProfile({
           displayName: username,
+          photoURL:
+            "https://cdn4.iconfinder.com/data/icons/instagram-ui-twotone/48/Paul-18-512.png",
         });
         // console.log(authUser);
       })

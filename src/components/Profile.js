@@ -9,15 +9,7 @@ const Profile = () => {
   return (
     <div className="profile">
       <div className="profile-image">
-        {!user.photoURL ? (
-          <img
-            src="https://cdn4.iconfinder.com/data/icons/instagram-ui-twotone/48/Paul-18-512.png"
-            alt=""
-            className="image"
-          />
-        ) : (
-          <img src={user.photoURL} alt="" className="image" />
-        )}
+        <img src={user.photoURL} alt="" className="image" />
       </div>
       <div className="profile-flex">
         <div className="profile-set">

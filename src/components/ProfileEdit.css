@@ -31,7 +31,9 @@
 }
 
 .profileChange > span {
-  margin-right: 10px;
+  margin-right: 15px;
+  margin-left: 10px;
+
   color: #0095f6;
   font-weight: 600;
   cursor: pointer;
