@@ -10,7 +10,7 @@ const ProfileEdit = () => {
   const [progress, setProgress] = useState(0);
 
   const updateProfile = () => {
-    auth.updateCurrentUser({
+    return auth.updateCurrentUser({
       photoURL: image,
     });
   };
