@@ -55,26 +55,6 @@ const ProfileEdit = () => {
     <div className="profileEdit">
       <ProfileEditOptions />
       <div className="name1">
-        {/* {!user.photoURL ? (
-      
-        ) : (
-          <div className="profileChange">
-            <Avatar src={user.photoURL} alt={user.displayName} />
-            <input type="file" onChange={handleChange}></input>
-            <span
-              onClick={(e) => {
-                handleUpload();
-                e.preventDefault();
-                updateProfileEdit();
-              }}
-            >
-              Change your Profile Pic
-            </span>
-
-            <progress value={progress}></progress>
-          </div>
-        )} */}
-
         <div className="profileChange">
           <Avatar src={user.photoURL} />
           <input type="file" onChange={handleChange}></input>
