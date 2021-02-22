@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Header from "./components/Header";
 import "./App.css";
 import Login from "./components/Login";
@@ -13,7 +13,7 @@ import ProfileEdit from "./components/ProfileEdit";
 import Footer from "./components/Footer";
 
 const App = () => {
-  const [{ user }, dispatch] = useDataLayerValue();
+  const [{}, dispatch] = useDataLayerValue();
 
   // console.info(user)
 
@@ -33,8 +33,6 @@ const App = () => {
       }
     });
   }, [dispatch]);
-
-  
 
   return (
     <Router>
