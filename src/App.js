@@ -13,7 +13,7 @@ import ProfileEdit from "./components/ProfileEdit";
 import Footer from "./components/Footer";
 
 const App = () => {
-  // const [{ user }, dispatch] = useDataLayerValue();
+  const [{ user }, dispatch] = useDataLayerValue();
 
   // console.info(user)
 
